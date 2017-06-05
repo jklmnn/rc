@@ -103,13 +103,16 @@
 #   *all* aliases, for example, use @@INSERT-aliases-all@@.
 
 #check for terminal emulator
-term=$(ps -h -o comm -p $(ps -h -o ppid -p $$))
-case $term in
+if [ $(command -v tmux) ]
+then
+    term=$(ps -h -o comm -p $(ps -h -o ppid -p $$))
+    case $term in
 	(login) tmux; exit;
-		;;
+	    ;;
 	(sshd) tmux; exit;
-		;;
-esac
+	    ;;
+    esac
+fi
 
 # zsh profiling
 # just execute 'ZSH_PROFILE_RC=1 zsh' and run 'zprof' to get the details
@@ -3332,9 +3335,15 @@ zrclocal
 #@# split functions-search 8
 
 #git flow completition
-source /usr/share/zsh/vendor-completions/_git-flow
+if [ -e /usr/share/zsh/vendor-completions/_git-flow ]
+then
+    source /usr/share/zsh/vendor-completions/_git-flow
+fi
 #syntax highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
+then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 #rust
 export PATH="$HOME/.cargo/bin:$PATH"
