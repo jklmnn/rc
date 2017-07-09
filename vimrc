@@ -29,6 +29,7 @@ set softtabstop=4
 set expandtab
 set cindent
 set splitright
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 map Y y$
 
