@@ -3345,6 +3345,8 @@ then
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+export PATH="$HOME/bin:$PATH"
+
 #rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
