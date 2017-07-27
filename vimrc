@@ -9,6 +9,7 @@ call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'https://github.com/terryma/vim-multiple-cursors.git'
     Plugin 'https://github.com/rhysd/committia.vim.git'
+    Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
