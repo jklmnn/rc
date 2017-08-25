@@ -10,6 +10,7 @@ call vundle#begin()
     Plugin 'https://github.com/terryma/vim-multiple-cursors.git'
     Plugin 'https://github.com/rhysd/committia.vim.git'
     Plugin 'rust-lang/rust.vim'
+    Plugin 'https://github.com/Raimondi/delimitMate.git'
 
 call vundle#end()
 
