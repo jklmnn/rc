@@ -3345,10 +3345,13 @@ then
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 
 #rust
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin"
+
+#ada and spark
+export PATH="$PATH:/usr/local/gnat-gpl/bin:/usr/local/spark-gpl/bin"
 
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
