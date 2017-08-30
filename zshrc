@@ -3353,6 +3353,9 @@ export PATH="$PATH:$HOME/.cargo/bin"
 #ada and spark
 export PATH="$PATH:/usr/local/gnat-gpl/bin:/usr/local/spark-gpl/bin"
 
+#disable core dumps
+ulimit -c 0
+
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 # Local variables:
