@@ -12,6 +12,7 @@ call vundle#begin()
     Plugin 'rust-lang/rust.vim'
     Plugin 'https://github.com/Raimondi/delimitMate.git'
     Plugin 'https://github.com/tpope/vim-fugitive.git'
+    Plugin 'https://github.com/vim-scripts/sgmlendtag.git'
 
 call vundle#end()
 
