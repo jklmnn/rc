@@ -107,9 +107,9 @@ if [ $(command -v tmux) ]
 then
     term=$(ps -h -o comm -p $(ps -h -o ppid -p $$))
     case $term in
-	(login) tmux; exit;
+	(login) tmux -u; exit;
 	    ;;
-	(sshd) tmux; exit;
+	(sshd) tmux -u; exit;
 	    ;;
     esac
 fi
