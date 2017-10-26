@@ -1,0 +1,6 @@
+out_to_x no
+out_to_console yes
+update_interval 1
+format_human_readable yes
+TEXT
+${addr enp4s0} | ${mem}/${memmax} | ${loadavg 1} | @${nodename} | ${time %Y-%m-%d %H-%M-%S}
