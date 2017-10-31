@@ -13,6 +13,7 @@ call vundle#begin()
     Plugin 'https://github.com/Raimondi/delimitMate.git'
     Plugin 'https://github.com/tpope/vim-fugitive.git'
     Plugin 'https://github.com/vim-scripts/sgmlendtag.git'
+    Plugin 'https://github.com/cohama/agit.vim'
 
 call vundle#end()
 
