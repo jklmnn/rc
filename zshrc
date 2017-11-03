@@ -3351,7 +3351,7 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 #ada and spark
-export PATH="$PATH:/usr/local/gnat-gpl/bin:/usr/local/spark-gpl/bin"
+export PATH="$PATH:/usr/local/gnat-pro/bin:/usr/local/spark-pro/bin:/usr/local/gps-pro/bin:/usr/local/gnat-gpl/bin:/usr/local/spark-gpl/bin"
 
 #disable core dumps
 ulimit -c 0
