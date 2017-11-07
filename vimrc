@@ -39,6 +39,8 @@ set cindent
 set splitright
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
+colorscheme ron
+
 map Y y$
 
 let g:ycm_enable_diagnostic_highlighting = 0
