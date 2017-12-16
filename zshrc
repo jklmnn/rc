@@ -3339,6 +3339,13 @@ if [ -e /usr/share/zsh/vendor-completions/_git-flow ]
 then
     source /usr/share/zsh/vendor-completions/_git-flow
 fi
+
+#autosuggestion
+if [ -e ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]
+then
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 #syntax highlighting
 if [ -e /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
 then
