@@ -14,6 +14,7 @@ call vundle#begin()
     Plugin 'https://github.com/tpope/vim-fugitive.git'
     Plugin 'https://github.com/vim-scripts/sgmlendtag.git'
     Plugin 'https://github.com/cohama/agit.vim'
+    Plugin 'https://github.com/vim-scripts/DoxygenToolkit.vim.git'
 
 call vundle#end()
 
