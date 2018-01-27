@@ -1,8 +1,6 @@
 set nocompatible
 filetype off
 
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -16,6 +14,7 @@ call vundle#begin()
     Plugin 'https://github.com/cohama/agit.vim'
     Plugin 'https://github.com/vim-scripts/DoxygenToolkit.vim.git'
     Plugin 'https://github.com/easymotion/vim-easymotion.git'
+    Plugin 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
 
 call vundle#end()
 
