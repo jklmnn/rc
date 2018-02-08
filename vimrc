@@ -15,6 +15,7 @@ call vundle#begin()
     Plugin 'https://github.com/vim-scripts/DoxygenToolkit.vim.git'
     Plugin 'https://github.com/easymotion/vim-easymotion.git'
     Plugin 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
+    Plugin 'https://github.com/vim-scripts/cscope.vim.git'
 
 call vundle#end()
 
