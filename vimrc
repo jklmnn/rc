@@ -18,6 +18,7 @@ call vundle#begin()
     Plugin 'https://github.com/vim-scripts/cscope.vim.git'
     Plugin 'https://github.com/romainl/vim-cool.git'
     Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+    Plugin 'https://github.com/maxbrunsfeld/vim-yankstack.git'
 
 call vundle#end()
 
