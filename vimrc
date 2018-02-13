@@ -17,6 +17,7 @@ call vundle#begin()
     Plugin 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
     Plugin 'https://github.com/vim-scripts/cscope.vim.git'
     Plugin 'https://github.com/romainl/vim-cool.git'
+    Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 
 call vundle#end()
 
