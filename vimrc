@@ -19,6 +19,7 @@ call vundle#begin()
     Plugin 'https://github.com/romainl/vim-cool.git'
     Plugin 'https://github.com/Valloric/YouCompleteMe.git'
     Plugin 'https://github.com/maxbrunsfeld/vim-yankstack.git'
+    Plugin 'https://github.com/lervag/vimtex.git'
 
 call vundle#end()
 
