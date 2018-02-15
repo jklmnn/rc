@@ -20,6 +20,8 @@ call vundle#begin()
     Plugin 'https://github.com/Valloric/YouCompleteMe.git'
     Plugin 'https://github.com/maxbrunsfeld/vim-yankstack.git'
     Plugin 'https://github.com/lervag/vimtex.git'
+    Plugin 'https://github.com/SirVer/ultisnips.git'
+    Bundle 'honza/vim-snippets'
 
 call vundle#end()
 
@@ -52,3 +54,9 @@ map Y y$
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_error_symbol = 'e:'
 let g:ycm_warning_symbol = 'w:'
+
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "usnippets"]
