@@ -22,6 +22,7 @@ call vundle#begin()
     Plugin 'https://github.com/lervag/vimtex.git'
     Plugin 'https://github.com/SirVer/ultisnips.git'
     Bundle 'honza/vim-snippets'
+    Plugin 'ntpeters/vim-better-whitespace'
 
 call vundle#end()
 
