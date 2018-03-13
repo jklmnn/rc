@@ -3363,6 +3363,10 @@ export PATH="$PATH:/usr/local/gnat/bin:/usr/local/spark/bin:/usr/local/gps/bin:/
 #disable core dumps
 ulimit -c 0
 
+# vim server
+alias svim="vim --servername $(hostname)"
+alias rvim="vim --servername $(hostname) --remote-tab"
+
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 # Local variables:
