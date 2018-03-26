@@ -3367,6 +3367,8 @@ ulimit -c 0
 alias svim="vim --servername $(hostname)"
 alias rvim="vim --servername $(hostname) --remote-tab"
 
+bindkey -M vicmd v edit-command-line
+
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 # Local variables:
