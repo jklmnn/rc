@@ -1407,8 +1407,16 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     function zle-line-finish () {
         zle-rmkx
     }
+    function zle-line-init zle-keymap-select () {
+        RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+        RPS2=$RPS1
+        zle reset-prompt
+        zle-smkx
+    }
+
     zle -N zle-line-init
     zle -N zle-line-finish
+    zle -N zle-keymap-select
 else
     for i in {s,r}mkx; do
         (( ${+terminfo[$i]} )) || grml_missing_features+=($i)
