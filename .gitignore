@@ -1,6 +1,7 @@
 *
 !.gitignore
-!vimrc
+!vimrc-default
+!vimrc-extended
 !zshrc
 !tmux.conf
 !tmuxconkyrc

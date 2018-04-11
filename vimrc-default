@@ -15,14 +15,10 @@ call vundle#begin()
     Plugin 'https://github.com/vim-scripts/DoxygenToolkit.vim.git'
     Plugin 'https://github.com/easymotion/vim-easymotion.git'
     Plugin 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
-    Plugin 'https://github.com/vim-scripts/cscope.vim.git'
     Plugin 'https://github.com/romainl/vim-cool.git'
-    Plugin 'https://github.com/Valloric/YouCompleteMe.git'
     Plugin 'https://github.com/maxbrunsfeld/vim-yankstack.git'
-    Plugin 'https://github.com/lervag/vimtex.git'
-    Plugin 'https://github.com/SirVer/ultisnips.git'
-    Bundle 'honza/vim-snippets'
     Plugin 'ntpeters/vim-better-whitespace'
+    "Plugin EXTEND
 
 call vundle#end()
 
