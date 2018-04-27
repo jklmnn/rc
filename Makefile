@@ -8,6 +8,7 @@ vim-default: $(HOME)/.vimrc vundle
 vim-extended: vim-default vimrc-extended
 	sed -i "/\"Plugin EXTEND/r vimrc-extended" $(HOME)/.vimrc
 	sed -i "s/\"Plugin EXTEND//g" $(HOME)/.vimrc
+	vim +PluginInstall +qall
 
 vundle: $(HOME)/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
