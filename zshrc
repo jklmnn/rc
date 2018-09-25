@@ -3805,6 +3805,12 @@ alias rvim="vim --servername $(hostname) --remote-tab"
 
 bindkey -M vicmd v edit-command-line
 
+# OPAM configuration
+. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# Go
+export GOPATH=~/.go
+
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 # Local variables:
