@@ -24,6 +24,7 @@ call vundle#begin()
 call vundle#end()
 
 filetype plugin indent on
+autocmd FileType ada setlocal expandtab shiftwidth=3 softtabstop=3
 
 syntax on
 
