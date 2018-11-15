@@ -3811,6 +3811,13 @@ bindkey -M vicmd v edit-command-line
 # Go
 export GOPATH=~/.go
 
+# ssh-agent
+
+if [ -z $SSH_AGENT ]
+then
+    eval $(ssh-agent)
+fi
+
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 # Local variables:
