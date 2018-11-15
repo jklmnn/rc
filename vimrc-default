@@ -46,6 +46,7 @@ set cindent
 set splitright
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set cm=blowfish2
+set tabpagemax=100
 
 colorscheme ron
 
