@@ -3818,6 +3818,39 @@ then
     eval $(ssh-agent)
 fi
 
+# https://gist.github.com/florianschmidt1994/64d6f5b58a84c77802cce5e415d7e3dc
+if [ $(command -v fzf) ]
+then
+
+    function fh() {
+        command=$(fc -ln 0|               # show history without line numbers
+        awk '!x[$0]++'  |               # drop duplicates (https://unix.stackexchange.com/a/193331)
+        fzf -e +s \
+            --tac \
+            --color=light \
+            --height=20 \
+            --inline-info \
+            --border \
+            --prompt="Search history "  # fuzzy find with exact match, no sorting and custom style
+        )
+
+        if [[ !  -z  $param  ]]; then
+            BUFFER=$BUFFER
+            zle redisplay     # redisplay the current command prompt line
+        else
+            # See http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Widgets
+            # for more details on this
+            BUFFER=$command   # replace the buffer of the command prompt with our command
+            zle redisplay     # redisplay the current command prompt line
+            zle accept-line   # accept the current line in buffer a.k.a "press enter"
+        fi
+    }
+
+    zle -N fh           # Run my as a zsh widget / line editor thing
+    bindkey "\C-r" fh   # Bind our function to ctrl-r
+
+fi
+
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 # Local variables:
