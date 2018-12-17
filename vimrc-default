@@ -19,6 +19,7 @@ call vundle#begin()
     Plugin 'https://github.com/maxbrunsfeld/vim-yankstack.git'
     Plugin 'ntpeters/vim-better-whitespace'
     Plugin 'https://github.com/heavenshell/vim-pydocstring.git'
+    Plugin 'https://github.com/ap/vim-buftabline.git'
     "Plugin EXTEND
 
 call vundle#end()
