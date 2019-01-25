@@ -3793,8 +3793,6 @@ export PATH="$PATH:$HOME/bin"
 #rust
 export PATH="$PATH:$HOME/.cargo/bin"
 
-#ada and spark
-export PATH="$PATH:/usr/local/gnat/bin:/usr/local/spark/bin:/usr/local/gps/bin:/usr/local/gnat-arm/bin"
 
 #disable core dumps
 ulimit -c 0
@@ -3850,6 +3848,23 @@ then
     bindkey "\C-r" fh   # Bind our function to ctrl-r
 
 fi
+
+function virtual_env_prompt () {
+  REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+}
+grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
+
+function ada_prompt () {
+    REPLY=${GNAT+(${$(gnat --version | head -n 1):t}) }
+}
+grml_theme_add_token ada -f ada_prompt '%F{magenta}' '%f'
+
+function gnatenv () {
+    export PATH="/usr/local/gnat/bin:/usr/local/spark/bin:/usr/local/gps/bin:/usr/local/gnat-arm/bin:$PATH"
+    export GNAT=1
+}
+
+zstyle ':prompt:grml:left:setup' items rc change-root user at host path virtual-env ada vcs percent
 
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
