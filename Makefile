@@ -19,11 +19,13 @@ $(HOME)/.vim/bundle/Vundle.vim:
 $(HOME)/.vimrc: vimrc-default
 	cp vimrc-default $(HOME)/.vimrc
 
-zshrc.local:
+$(HOME)/.zshrc.local:
 	cp zshrc.local $(HOME)/.zshrc.local
 
-zshrc.pre:
+$(HOME)/.zshrc.pre:
 	cp zshrc.pre $(HOME)/.zshrc.pre
 
-zsh: zshrc zshrc.local zshrc.pre
+$(HOME)/.zshrc:
 	wget -O $(HOME)/.zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+
+zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local $(HOME)/.zshrc.pre
