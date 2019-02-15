@@ -93,5 +93,5 @@ function gnatenv () {
     export GNAT=1
 }
 
-zstyle ':prompt:grml:left:setup' items rc change-root user at host path virtual-env ada vcs percent
+zstyle ':prompt:grml:left:setup' items time rc change-root user at host path virtual-env ada vcs percent
 
