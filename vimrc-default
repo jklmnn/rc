@@ -20,12 +20,13 @@ call vundle#begin()
     Plugin 'ntpeters/vim-better-whitespace'
     Plugin 'https://github.com/heavenshell/vim-pydocstring.git'
     Plugin 'https://github.com/ap/vim-buftabline.git'
+    Plugin 'junegunn/vim-easy-align'
     "Plugin EXTEND
 
 call vundle#end()
 
 filetype plugin indent on
-autocmd FileType ada setlocal expandtab shiftwidth=3 softtabstop=3
+autocmd FileType ada setlocal expandtab shiftwidth=3 softtabstop=3 colorcolumn=120
 
 syntax on
 
