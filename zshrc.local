@@ -88,10 +88,39 @@ function ada_prompt () {
 }
 grml_theme_add_token ada -f ada_prompt '%F{magenta}' '%f'
 
+gnatpaths=(
+           '/usr/local/adacore/gnat-pro.19.1/bin:/usr/local/adacore/spark-pro.19.1/bin:/usr/local/adacore/gps-pro.19.1/bin' \
+           '/usr/local/adacore/gnat-community.2018/bin' \
+           '/usr/local/adacore/gnat-pro.20.w/bin:/usr/local/adacore/spark-pro.20.w/bin:/usr/local/adacore/gps-pro.19.1/bin' \
+           '/usr/local/adacore/gnat-community.2017/bin:/usr/local/adacore/spark-community.2017/bin' \
+           '/usr/local/adacore/gnat-pro.18.2/bin:/usr/local/adacore/spark-pro.19.1/bin:/usr/local/adacore/gps-pro.19.1/bin' \
+           )
+
 function gnatenv () {
-    export PATH="/usr/local/gnat/bin:/usr/local/spark/bin:/usr/local/gps/bin:/usr/local/gnat-arm/bin:$PATH"
+    which dialog > /dev/null 2>&1
+    if [ $? = 0 ]
+    then
+        dia_cmd="dialog --no-tags --output-fd 1 --radiolist 'GNAT Version' 0 0 $((${#gnatpaths[@]} + 1))"
+        PATH=$DEFAULT_PATH which gnat > /dev/null 2>&1
+        if [ $? = 0 ]
+        then
+            dia_cmd+=" '' '$(PATH=$DEFAULT_PATH gnat --version | head -n1)' ''"
+        fi
+        for p in $gnatpaths
+        do
+            PATH=$p which gnat > /dev/null 2>&1
+            if [ $? = 0 ]
+            then
+                dia_cmd+=" '$p' '$(PATH=$p gnat --version | head -n1)' ''"
+            fi
+        done
+        export PATH=$(bash -c "$dia_cmd"):$DEFAULT_PATH
+    else
+        export PATH="/usr/local/gnat/bin:/usr/local/spark/bin:/usr/local/gps/bin:/usr/local/gnat-arm/bin:$PATH"
+    fi
     export GNAT=1
 }
 
 zstyle ':prompt:grml:left:setup' items time rc change-root user at host path virtual-env ada vcs percent
 
+export DEFAULT_PATH=$PATH
