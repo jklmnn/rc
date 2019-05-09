@@ -30,6 +30,7 @@ autocmd FileType ada setlocal expandtab shiftwidth=3 softtabstop=3 colorcolumn=1
 
 syntax on
 
+set path+=**
 set wildmenu
 set wildmode=longest:full
 set showcmd
