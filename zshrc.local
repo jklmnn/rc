@@ -40,7 +40,7 @@ export GOPATH=~/.go
 
 # ssh-agent
 
-if [ -z $SSH_AGENT ]
+if [ -z $SSH_AGENT -a -z $SSH_AUTH_SOCK ]
 then
     eval $(ssh-agent)
 fi
