@@ -9,6 +9,11 @@ fi
 if [ -e ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]
 then
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    if [ -e /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]
+    then
+        source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    fi
 fi
 
 #syntax highlighting
