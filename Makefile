@@ -19,10 +19,10 @@ $(HOME)/.vim/bundle/Vundle.vim:
 $(HOME)/.vimrc: vimrc-default
 	cp vimrc-default $(HOME)/.vimrc
 
-$(HOME)/.zshrc.local:
+$(HOME)/.zshrc.local: zshrc.local
 	cp zshrc.local $(HOME)/.zshrc.local
 
-$(HOME)/.zshrc.pre:
+$(HOME)/.zshrc.pre: zshrc.pre
 	cp zshrc.pre $(HOME)/.zshrc.pre
 
 $(HOME)/.zshrc:
