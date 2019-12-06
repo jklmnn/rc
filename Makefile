@@ -1,5 +1,5 @@
 
-all: vim zsh
+all: vim zsh tmux
 
 vim: vim-default
 
@@ -29,3 +29,11 @@ $(HOME)/.zshrc:
 	wget -O $(HOME)/.zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
 
 zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local $(HOME)/.zshrc.pre
+
+$(HOME)/.tmux.conf: tmux.conf
+	cp tmux.conf $(HOME)/.tmux.conf
+
+$(HOME)/.tmuxconkyrc: tmuxconkyrc
+	cp tmuxconkyrc $(HOME)/.tmuxconkyrc
+
+tmux: $(HOME)/.tmux.conf $(HOME)/.tmuxconkyrc
