@@ -22,13 +22,10 @@ $(HOME)/.vimrc: vimrc-default
 $(HOME)/.zshrc.local: zshrc.local
 	cp zshrc.local $(HOME)/.zshrc.local
 
-$(HOME)/.zshrc.pre: zshrc.pre
-	cp zshrc.pre $(HOME)/.zshrc.pre
-
 $(HOME)/.zshrc:
 	wget -O $(HOME)/.zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
 
-zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local $(HOME)/.zshrc.pre
+zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local
 
 $(HOME)/.tmux.conf: tmux.conf
 	cp tmux.conf $(HOME)/.tmux.conf
