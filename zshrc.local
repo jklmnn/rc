@@ -94,6 +94,7 @@ function ada_prompt () {
 grml_theme_add_token ada -f ada_prompt '%F{magenta}' '%f'
 
 gnatpaths=(
+           '/usr/local/adacore/gnat-pro.20.0/bin:/usr/local/adacore/spark-pro.20.0/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
            '/usr/local/adacore/gnat-pro.19.1/bin:/usr/local/adacore/spark-pro.19.1/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
            '/usr/local/adacore/gnat-pro.19.2/bin:/usr/local/adacore/spark-pro.19.2/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
            '/usr/local/adacore/gnatstudio.20.0/bin:/usr/local/adacore/gnat-community.2018/bin' \
