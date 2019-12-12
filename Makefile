@@ -34,3 +34,6 @@ $(HOME)/.tmuxconkyrc: tmuxconkyrc
 	cp tmuxconkyrc $(HOME)/.tmuxconkyrc
 
 tmux: $(HOME)/.tmux.conf $(HOME)/.tmuxconkyrc
+
+nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
+	curl https://nixos.org/nix/install | sh

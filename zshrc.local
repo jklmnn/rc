@@ -27,6 +27,8 @@ export PATH="$PATH:$HOME/bin"
 #rust
 export PATH="$PATH:$HOME/.cargo/bin"
 
+#nix
+if [ -e /home/jk/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jk/.nix-profile/etc/profile.d/nix.sh; fi
 
 #disable core dumps
 ulimit -c 0
