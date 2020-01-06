@@ -126,6 +126,7 @@ function gnatenv () {
         done
         export PATH=$(bash -c "$dia_cmd"):$DEFAULT_PATH
     else
+        echo dialog not installed, using /usr/local/gnat/bin
         export PATH="/usr/local/gnat/bin:/usr/local/spark/bin:/usr/local/gps/bin:/usr/local/gnat-arm/bin:$PATH"
     fi
     export GNAT=1
