@@ -52,6 +52,14 @@ then
     eval $(ssh-agent)
 fi
 
+TMUX_SSH_AUTH_SOCK="/tmp/ssh-agent-$USER-tmux"
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $TMUX_SSH_AUTH_SOCK ]
+then
+    rm -f $TMUX_SSH_AUTH_SOCK
+    ln -sf $SSH_AUTH_SOCK $TMUX_SSH_AUTH_SOCK
+    export SSH_AUTH_SOCK=$TMUX_SSH_AUTH_SOCK
+fi
+
 # https://gist.github.com/florianschmidt1994/64d6f5b58a84c77802cce5e415d7e3dc
 if [ $(command -v fzf) ]
 then
