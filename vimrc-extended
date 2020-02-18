@@ -4,3 +4,4 @@
     Plugin 'https://github.com/SirVer/ultisnips.git'
     Bundle 'honza/vim-snippets'
     Plugin 'https://github.com/tell-k/vim-autopep8.git'
+    Plugin 'https://github.com/dense-analysis/ale.git'
