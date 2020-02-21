@@ -66,3 +66,6 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "usnippets"]
+
+let g:ale_lint_on_text_changed = "never"
+let g:ale_lint_on_insert_leave = 0
