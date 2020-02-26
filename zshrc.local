@@ -27,9 +27,6 @@ export PATH="$PATH:$HOME/.local/bin"
 #rust
 export PATH="$PATH:$HOME/.cargo/bin"
 
-#llvm gnat
-export PATH="$PATH:/usr/local/adacore/gnat-llvm-xtensa/llvm-interface/bin"
-
 #nix
 if [ -e /home/jk/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jk/.nix-profile/etc/profile.d/nix.sh; fi
 
