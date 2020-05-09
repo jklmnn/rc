@@ -111,14 +111,16 @@ function ada_prompt () {
 grml_theme_add_token ada -f ada_prompt '%F{magenta}' '%f'
 
 gnatpaths=(
+           '/usr/local/adacore/gnat-pro.20.1/bin:/usr/local/adacore/spark-pro.20.1/bin:/usr/local/adacore/gnatstudio.20.1/bin' \
+           '/usr/local/adacore/gnatstudio.20.1/bin:/usr/local/adacore/gnat-community.2019/bin:/usr/local/adacore/gnat-community.2019-arm/bin' \
+           '/usr/local/adacore/gnat-pro.21.w/bin:/usr/local/adacore/spark-pro.21.w/bin:/usr/local/adacore/gnatstudio.21.w/bin' \
            '/usr/local/adacore/gnat-pro.20.0/bin:/usr/local/adacore/spark-pro.20.0/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
-           '/usr/local/adacore/gnat-pro.19.1/bin:/usr/local/adacore/spark-pro.19.1/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
-           '/usr/local/adacore/gnat-pro.19.2/bin:/usr/local/adacore/spark-pro.19.2/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
-           '/usr/local/adacore/gnatstudio.20.0/bin:/usr/local/adacore/gnat-community.2018/bin' \
-           '/usr/local/adacore/gnatstudio.20.0/bin:/usr/local/adacore/gnat-community.2019/bin:/usr/local/adacore/gnat-community.2019-arm/bin' \
-           '/usr/local/adacore/gnat-pro.20.w/bin:/usr/local/adacore/spark-pro.20.w/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
+           '/usr/local/adacore/gnat-pro.19.1/bin:/usr/local/adacore/spark-pro.19.1/bin:/usr/local/adacore/gnatstudio.20.1/bin' \
+           '/usr/local/adacore/gnat-pro.19.2/bin:/usr/local/adacore/spark-pro.19.2/bin:/usr/local/adacore/gnatstudio.20.1/bin' \
+           '/usr/local/adacore/gnat-pro.18.2/bin:/usr/local/adacore/spark-pro.19.1/bin:/usr/local/adacore/gnatstudio.20.1/bin' \
+           '/usr/local/adacore/gnat-pro.20.w/bin:/usr/local/adacore/spark-pro.20.w/bin:/usr/local/adacore/gnatstudio.20.1/bin' \
+           '/usr/local/adacore/gnatstudio.20.1/bin:/usr/local/adacore/gnat-community.2018/bin' \
            '/usr/local/adacore/gnat-community.2017/bin:/usr/local/adacore/spark-community.2017/bin' \
-           '/usr/local/adacore/gnat-pro.18.2/bin:/usr/local/adacore/spark-pro.19.1/bin:/usr/local/adacore/gnatstudio.20.0/bin' \
            )
 
 function gnatenv () {
