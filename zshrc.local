@@ -50,6 +50,7 @@ export GOPATH=~/.go
 if [ -z $SSH_AGENT -a -z $SSH_AUTH_SOCK ]
 then
     eval $(ssh-agent)
+    ssh-add
 fi
 
 TMUX_SSH_AUTH_SOCK="/tmp/ssh-agent-$USER-tmux"
