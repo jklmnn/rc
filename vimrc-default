@@ -21,6 +21,7 @@ call vundle#begin()
     Plugin 'https://github.com/heavenshell/vim-pydocstring.git'
     Plugin 'https://github.com/ap/vim-buftabline.git'
     Plugin 'junegunn/vim-easy-align'
+    Plugin 'https://github.com/AndrewRadev/linediff.vim.git'
     "Plugin EXTEND
 
 call vundle#end()
