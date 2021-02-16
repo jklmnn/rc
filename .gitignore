@@ -1,4 +1,5 @@
 *
+!*/
 !.gitignore
 !vimrc-default
 !vimrc-extended
@@ -7,3 +8,4 @@
 !tmux.conf
 !tmuxconkyrc
 !Makefile
+!*.lua

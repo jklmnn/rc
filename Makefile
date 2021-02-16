@@ -1,5 +1,5 @@
 
-all: vim zsh tmux
+all: vim zsh tmux modules
 
 vim: vim-default
 
@@ -37,3 +37,8 @@ tmux: $(HOME)/.tmux.conf $(HOME)/.tmuxconkyrc
 
 nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 	curl https://nixos.org/nix/install | sh
+
+modules:
+	rsync -rupE modules/* $(HOME)/.modules
+
+.PHONY: all vim vim-default vim-extended vundle zsh tmux nix modules
