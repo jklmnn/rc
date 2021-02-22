@@ -7,18 +7,13 @@ call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'https://github.com/terryma/vim-multiple-cursors.git'
     Plugin 'https://github.com/rhysd/committia.vim.git'
-    Plugin 'rust-lang/rust.vim'
     Plugin 'https://github.com/Raimondi/delimitMate.git'
     Plugin 'https://github.com/tpope/vim-fugitive.git'
     Plugin 'https://github.com/vim-scripts/sgmlendtag.git'
-    Plugin 'https://github.com/cohama/agit.vim'
-    Plugin 'https://github.com/vim-scripts/DoxygenToolkit.vim.git'
-    Plugin 'https://github.com/easymotion/vim-easymotion.git'
     Plugin 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
     Plugin 'https://github.com/romainl/vim-cool.git'
     Plugin 'https://github.com/maxbrunsfeld/vim-yankstack.git'
     Plugin 'ntpeters/vim-better-whitespace'
-    Plugin 'https://github.com/heavenshell/vim-pydocstring.git'
     Plugin 'https://github.com/ap/vim-buftabline.git'
     Plugin 'junegunn/vim-easy-align'
     Plugin 'https://github.com/AndrewRadev/linediff.vim.git'
@@ -58,16 +53,10 @@ colorscheme ron
 
 map Y y$
 
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_error_symbol = 'e:'
-let g:ycm_warning_symbol = 'w:'
-let g:ycm_key_list_stop_completion = ['<C-y>', '<UP>', '<DOWN>']
+let g:deoplete#enable_at_startup = 1
 
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "usnippets"]
-
-let g:ale_lint_on_text_changed = "never"
-let g:ale_lint_on_insert_leave = 0
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><up> pumvisible() ? '<c-e><up>' : '<up>'
+inoremap <expr><down> pumvisible() ? '<c-e><down>' : '<down>'

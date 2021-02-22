@@ -1,7 +1,7 @@
 
-all: vim zsh tmux modules
+all: vimrc zsh tmux modules
 
-vim: vim-default
+vimrc: vim-default
 
 vim-default: $(HOME)/.vimrc vundle
 
@@ -41,4 +41,4 @@ nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 modules:
 	rsync -rupE modules/* $(HOME)/.modules
 
-.PHONY: all vim vim-default vim-extended vundle zsh tmux nix modules
+.PHONY: all vimrc vim-default vim-extended vundle zsh tmux nix modules
