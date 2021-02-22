@@ -1,6 +1,10 @@
-out_to_x no
-out_to_console yes
-update_interval 1
-format_human_readable yes
-TEXT
+conky.config = {
+	out_to_x = false,
+	out_to_console = true,
+	update_interval = 1,
+	format_human_readable = true,
+};
+
+conky.text = [[
 ${mem}/${memmax} | ${loadavg 1} | @${nodename} | ${time %Y-%m-%d %H-%M-%S}
+]];
