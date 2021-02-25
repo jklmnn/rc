@@ -1,16 +1,14 @@
 
 all: neovim zsh tmux modules
 
-$(HOME)/.config/nvim:
-	mkdir -p $@
+nvim: $(HOME)/.local/share/nvim/site/autoload/plug.vim
+	mkdir -p $(HOME)/.config/nvim
+	cp init.vim $(HOME)/.config/nvim/init.vim
 
-neovim: $(HOME)/.config/nvim/init.vim
-
-$(HOME)/.config/nvim/init.vim: $(HOME)/.local/share/nvim/site/autoload/plug.vim
-	cp init.vim $@
+neovim: nvim
 	nvim +PlugUpdate +qall
 
-neovim-extended: neovim
+neovim-extended: nvim
 	sed -i "/\"Plug extend/r init.extend" $(HOME)/.config/nvim/init.vim
 	sed -i "s/\"Plug extend//g" $(HOME)/.config/nvim/init.vim
 	nvim +PlugUpdate +UpdateRemotePlugins +qall
