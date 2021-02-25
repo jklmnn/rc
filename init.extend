@@ -1,2 +1,7 @@
     Plug 'https://github.com/Shougo/deoplete.nvim'
     Plug 'https://github.com/dense-analysis/ale.git'
+    Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+    Plug 'junegunn/fzf'

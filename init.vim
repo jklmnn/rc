@@ -58,3 +58,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr><up> pumvisible() ? '<c-e><up>' : '<up>'
 inoremap <expr><down> pumvisible() ? '<c-e><down>' : '<down>'
+
+let g:LanguageClient_serverCommands = {
+    \ 'ada': ['~/workspace/ada_language_server/.obj/server/ada_language_server'],
+    \ }
+
+nmap <F5> <Plug>(lcn-menu)
