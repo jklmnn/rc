@@ -1,10 +1,9 @@
 *
 !*/
 !.gitignore
-!vimrc-default
-!vimrc-extended
+!init.vim
+!init.extend
 !zshrc.local
-!zshrc.pre
 !tmux.conf
 !tmuxconkyrc
 !Makefile

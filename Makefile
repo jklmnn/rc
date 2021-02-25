@@ -1,23 +1,23 @@
 
-all: vimrc zsh tmux modules
+all: neovim zsh tmux modules
 
-vimrc: vim-default
+$(HOME)/.config/nvim:
+	mkdir -p $@
 
-vim-default: $(HOME)/.vimrc vundle
+neovim: $(HOME)/.config/nvim/init.vim
 
-vim-extended: vim-default vimrc-extended
-	sed -i "/\"Plugin EXTEND/r vimrc-extended" $(HOME)/.vimrc
-	sed -i "s/\"Plugin EXTEND//g" $(HOME)/.vimrc
-	vim +PluginInstall +qall
+$(HOME)/.config/nvim/init.vim: $(HOME)/.local/share/nvim/site/autoload/plug.vim
+	cp init.vim $@
+	nvim +PlugUpdate +qall
 
-vundle: $(HOME)/.vim/bundle/Vundle.vim
-	vim +PluginInstall +qall
+neovim-extended: neovim
+	sed -i "/\"Plug extend/r init.extend" $(HOME)/.config/nvim/init.vim
+	sed -i "s/\"Plug extend//g" $(HOME)/.config/nvim/init.vim
+	nvim +PlugUpdate +UpdateRemotePlugins +qall
 
-$(HOME)/.vim/bundle/Vundle.vim:
-	git clone https://github.com/VundleVim/Vundle.vim.git $(HOME)/.vim/bundle/Vundle.vim
-
-$(HOME)/.vimrc: vimrc-default
-	cp vimrc-default $(HOME)/.vimrc
+$(HOME)/.local/share/nvim/site/autoload/plug.vim:
+	curl -fLo $(HOME)/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 $(HOME)/.zshrc.local: zshrc.local
 	cp zshrc.local $(HOME)/.zshrc.local
@@ -41,4 +41,4 @@ nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 modules:
 	rsync -rupE modules/* $(HOME)/.modules
 
-.PHONY: all vimrc vim-default vim-extended vundle zsh tmux nix modules
+.PHONY: all neovim neovim-extended zsh tmux nix modules

@@ -1,0 +1,2 @@
+    Plug 'https://github.com/Shougo/deoplete.nvim'
+    Plug 'https://github.com/dense-analysis/ale.git'
