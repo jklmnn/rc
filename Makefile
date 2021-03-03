@@ -1,6 +1,17 @@
 
 all: neovim zsh tmux modules
 
+vimrc: $(HOME)/.vim/autoload/plug.vim
+	cp init.vim $(HOME)/.vimrc
+
+vim: vimrc
+	vim +PlugUpdate +qall
+
+vim-extended: vim
+	sed -i "/\"Plug extend/r init.extend" $(HOME)/.vimrc
+	sed -i "s/\"Plug extend//g" $(HOME)/.vimrc
+	nvim +PlugUpdate +UpdateRemotePlugins +qall
+
 nvim: $(HOME)/.local/share/nvim/site/autoload/plug.vim
 	mkdir -p $(HOME)/.config/nvim
 	cp init.vim $(HOME)/.config/nvim/init.vim
@@ -13,8 +24,8 @@ neovim-extended: nvim
 	sed -i "s/\"Plug extend//g" $(HOME)/.config/nvim/init.vim
 	nvim +PlugUpdate +UpdateRemotePlugins +qall
 
-$(HOME)/.local/share/nvim/site/autoload/plug.vim:
-	curl -fLo $(HOME)/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+$(HOME)/%/plug.vim:
+	curl -fLo $@ --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 $(HOME)/.zshrc.local: zshrc.local
@@ -39,4 +50,4 @@ nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 modules:
 	rsync -rupE modules/* $(HOME)/.modules
 
-.PHONY: all neovim neovim-extended zsh tmux nix modules
+.PHONY: all vim vim-extended neovim neovim-extended zsh tmux nix modules

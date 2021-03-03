@@ -1,4 +1,10 @@
-    Plug 'https://github.com/Shougo/deoplete.nvim'
+    if has('nvim')
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc'
+    endif
     Plug 'https://github.com/dense-analysis/ale.git'
     Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',

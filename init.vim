@@ -2,8 +2,11 @@ if &compatible
     set nocompatible
 endif
 
+if has('nvim')
 call plug#begin(stdpath('data').'plugged')
-    Plug 'VundleVim/Vundle.vim'
+else
+call plug#begin('~/.vim/plugged')
+endif
     Plug 'https://github.com/terryma/vim-multiple-cursors.git'
     Plug 'https://github.com/rhysd/committia.vim.git'
     Plug 'https://github.com/Raimondi/delimitMate.git'
@@ -52,6 +55,20 @@ colorscheme ron
 map Y y$
 
 let g:python3_host_prog = '/usr/bin/python3'
+func! Multiple_cursors_before()
+  if deoplete#is_enabled()
+    call deoplete#disable()
+    let g:deoplete_is_enable_before_multi_cursors = 1
+  else
+    let g:deoplete_is_enable_before_multi_cursors = 0
+  endif
+endfunc
+func! Multiple_cursors_after()
+  if g:deoplete_is_enable_before_multi_cursors
+    call deoplete#enable()
+  endif
+endfunc
+
 let g:deoplete#enable_at_startup = 1
 
 " <TAB>: completion.
