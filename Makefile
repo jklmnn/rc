@@ -10,7 +10,7 @@ vim: vimrc
 vim-extended: vim
 	sed -i "/\"Plug extend/r init.extend" $(HOME)/.vimrc
 	sed -i "s/\"Plug extend//g" $(HOME)/.vimrc
-	nvim +PlugUpdate +UpdateRemotePlugins +qall
+	vim +PlugUpdate +UpdateRemotePlugins +qall
 
 nvim: $(HOME)/.local/share/nvim/site/autoload/plug.vim
 	mkdir -p $(HOME)/.config/nvim
