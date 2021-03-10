@@ -6,8 +6,4 @@
       Plug 'roxma/vim-hug-neovim-rpc'
     endif
     Plug 'https://github.com/dense-analysis/ale.git'
-    Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
     Plug 'junegunn/fzf'

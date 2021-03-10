@@ -54,6 +54,8 @@ colorscheme ron
 
 map Y y$
 
+let g:ale_completion_enabled = 1
+
 let g:python3_host_prog = '/usr/bin/python3'
 func! Multiple_cursors_before()
   if deoplete#is_enabled()
@@ -69,6 +71,10 @@ func! Multiple_cursors_after()
   endif
 endfunc
 
+call deoplete#custom#option('sources', {
+\ '_': ['buffer', 'file', 'ale'],
+\})
+
 let g:deoplete#enable_at_startup = 1
 
 " <TAB>: completion.
@@ -76,9 +82,3 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr><up> pumvisible() ? '<c-e><up>' : '<up>'
 inoremap <expr><down> pumvisible() ? '<c-e><down>' : '<down>'
-
-let g:LanguageClient_serverCommands = {
-    \ 'ada': ['~/workspace/ada_language_server/.obj/server/ada_language_server'],
-    \ }
-
-nmap <F5> <Plug>(lcn-menu)
