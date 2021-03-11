@@ -54,9 +54,14 @@ colorscheme ron
 
 map Y y$
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 let g:ale_completion_enabled = 1
 
-let g:python3_host_prog = '/usr/bin/python3'
+let g:ale_linters = {
+\   'ada': ['adals'],
+\}
+
 func! Multiple_cursors_before()
   if deoplete#is_enabled()
     call deoplete#disable()
