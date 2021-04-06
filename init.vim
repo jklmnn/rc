@@ -56,11 +56,9 @@ map Y y$
 
 let g:python3_host_prog = '/usr/bin/python3'
 
-let g:ale_completion_enabled = 1
-
-let g:ale_linters = {
-\   'ada': ['adals'],
-\}
+let g:LanguageClient_serverCommands = {
+            \ 'ada': ['ada_language_server'],
+            \ }
 
 func! Multiple_cursors_before()
   if deoplete#is_enabled()
@@ -76,10 +74,14 @@ func! Multiple_cursors_after()
   endif
 endfunc
 
-call deoplete#custom#option('sources', {
-\ '_': ['buffer', 'file', 'ale'],
-\})
+try
+    call deoplete#custom#option('sources', {
+    \ '_': ['buffer', 'file', 'LanguageClient'],
+    \})
+catch
+endtry
 
+let g:LanguageClient_autoStart = 1
 let g:deoplete#enable_at_startup = 1
 
 " <TAB>: completion.
