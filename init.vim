@@ -89,3 +89,5 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr><up> pumvisible() ? '<c-e><up>' : '<up>'
 inoremap <expr><down> pumvisible() ? '<c-e><down>' : '<down>'
+
+au BufRead,BufNewFile *.anod             setfiletype python
