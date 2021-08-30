@@ -34,7 +34,22 @@ $(HOME)/.zshrc.local: zshrc.local
 $(HOME)/.zshrc:
 	wget -O $(HOME)/.zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
 
+$(HOME)/.zsh:
+	mkdir -p $@
+
+$(HOME)/.zsh/zsh-autosuggestions: $(HOME)/.zsh
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+$(HOME)/.zsh/zsh-syntax-highlighting: $(HOME)/.zsh
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+
+zsh-autosuggestions: $(HOME)/.zsh/zsh-autosuggestions
+
+zsh-syntax-highlighting: $(HOME)/.zsh/zsh-syntax-highlighting
+
 zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local
+
+zsh-all: zsh zsh-autosuggestions zsh-syntax-highlighting
 
 $(HOME)/.tmux.conf: tmux.conf
 	cp tmux.conf $(HOME)/.tmux.conf
@@ -50,4 +65,4 @@ nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 modules:
 	rsync -rupE modules/* $(HOME)/.modules
 
-.PHONY: all vim vim-extended neovim neovim-extended zsh tmux nix modules
+.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting tmux nix modules
