@@ -20,6 +20,7 @@ endif
     Plug 'junegunn/vim-easy-align'
     Plug 'https://github.com/AndrewRadev/linediff.vim.git'
     Plug 'https://github.com/thindil/a.vim.git'
+    Plug 'rust-lang/rust.vim'
     "Plug extend
 call plug#end()
 
