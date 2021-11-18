@@ -59,6 +59,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 let g:LanguageClient_serverCommands = {
             \ 'ada': ['ada_language_server'],
+            \ 'rust': ['rls'],
             \ }
 
 func! Multiple_cursors_before()
