@@ -75,3 +75,4 @@ let g:mucomplete#completion_delay = 1
 " inoremap <expr><down> pumvisible() ? '<c-e><down>' : '<down>'
 
 au BufRead,BufNewFile *.anod             setfiletype python
+au BufRead,BufNewFile *.rflx             setfiletype ada
