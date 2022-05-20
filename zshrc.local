@@ -27,6 +27,12 @@ else
     fi
 fi
 
+#alert after long commands
+if [ -e ~/.zsh/zlong_alert/zlong_alert.zsh ]
+then
+    source ~/.zsh/zlong_alert/zlong_alert.zsh
+fi
+
 export PATH="$PATH:$HOME/.local/bin"
 
 #rust

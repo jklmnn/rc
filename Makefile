@@ -43,13 +43,18 @@ $(HOME)/.zsh/zsh-autosuggestions: $(HOME)/.zsh
 $(HOME)/.zsh/zsh-syntax-highlighting: $(HOME)/.zsh
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 
+$(HOME)/.zsh/zlong_alert: $(HOME)/.zsh
+	git clone https://github.com/kevinywlui/zlong_alert.zsh ~/.zsh/zlong_alert
+
 zsh-autosuggestions: $(HOME)/.zsh/zsh-autosuggestions
 
 zsh-syntax-highlighting: $(HOME)/.zsh/zsh-syntax-highlighting
 
+zlong_alert: $(HOME)/.zsh/zlong_alert
+
 zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local
 
-zsh-all: zsh zsh-autosuggestions zsh-syntax-highlighting
+zsh-all: zsh zsh-autosuggestions zsh-syntax-highlighting zlong_alert
 
 $(HOME)/.tmux.conf: tmux.conf
 	cp tmux.conf $(HOME)/.tmux.conf
@@ -65,4 +70,4 @@ nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 modules:
 	rsync -rupE modules/* $(HOME)/.modules
 
-.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting tmux nix modules
+.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules
