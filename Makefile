@@ -12,14 +12,23 @@ vim-extended: vim
 	sed -i "s/\"Plug extend//g" $(HOME)/.vimrc
 	vim +PlugUpdate +UpdateRemotePlugins +qall
 
-nvim: $(HOME)/.local/share/nvim/site/autoload/plug.vim
+NVIM := $(shell which nvim || echo $(HOME)/.local/bin/nvim)
+
+$(NVIM):
+	curl -fLo $@ --create-dirs \
+		https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	chmod u+x $@
+
+neovim-bin: $(NVIM)
+
+nvim: $(HOME)/.local/share/nvim/site/autoload/plug.vim neovim-bin
 	mkdir -p $(HOME)/.config/nvim
 	cp init.vim $(HOME)/.config/nvim/init.vim
 
 neovim: nvim
 	nvim +PlugUpdate +qall
 
-neovim-extended: nvim
+neovim-extended: neovim
 	sed -i "/\"Plug extend/r init.extend" $(HOME)/.config/nvim/init.vim
 	sed -i "s/\"Plug extend//g" $(HOME)/.config/nvim/init.vim
 	nvim +PlugUpdate +UpdateRemotePlugins +qall
