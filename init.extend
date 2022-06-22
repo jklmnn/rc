@@ -1,2 +1,6 @@
     Plug 'https://github.com/lifepillar/vim-mucomplete.git'
     Plug 'junegunn/fzf'
+
+    if has('nvim')
+        Plug 'sakhnik/nvim-gdb'
+    endif
