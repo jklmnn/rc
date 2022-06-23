@@ -21,6 +21,7 @@ endif
     Plug 'https://github.com/AndrewRadev/linediff.vim.git'
     Plug 'https://github.com/thindil/a.vim.git'
     Plug 'rust-lang/rust.vim'
+    Plug 'https://github.com/Yggdroot/indentLine.git'
     "Plug extend
 call plug#end()
 
