@@ -51,10 +51,12 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set tabpagemax=100
 set hidden
 
+if !has('nvim')
 " mucomplete
-set completeopt+=menuone
-set completeopt+=noselect
-set shortmess+=c
+    set completeopt+=menuone
+    set completeopt+=noselect
+    set shortmess+=c
+endif
 
 colorscheme ron
 
@@ -65,14 +67,22 @@ endfunc
 func! Multiple_cursors_after()
 endfunc
 
-let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#completion_delay = 1
-
-" <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr><up> pumvisible() ? '<c-e><up>' : '<up>'
-" inoremap <expr><down> pumvisible() ? '<c-e><down>' : '<down>'
+if has('nvim')
+    let g:LanguageClient_serverCommands = {
+        \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+        \ 'python': ['pyls'],
+        \ 'ada': ['ada_language_server']
+        \ }
+    let g:deoplete#enable_at_startup = 1
+    ""<TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr><up> pumvisible() ? '<c-e><up>' : '<up>'
+    inoremap <expr><down> pumvisible() ? '<c-e><down>' : '<down>'
+else
+    let g:mucomplete#enable_auto_at_startup = 1
+    let g:mucomplete#completion_delay = 1
+endif
 
 au BufRead,BufNewFile *.anod             setfiletype python
 au BufRead,BufNewFile *.rflx             setfiletype ada
