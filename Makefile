@@ -79,4 +79,24 @@ nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 modules:
 	rsync -rupE modules/* $(HOME)/.modules
 
-.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules
+ALR := $(or $(shell which alr),$(HOME)/.local/bin/alr)
+
+ALS := $(shell which ada_language_server || echo $(HOME)/.local/bin/ada_language_server)
+
+$(ALR):
+	curl -fLo $@ --create-dirs \
+	    https://github.com/alire-project/alire/releases/download/v1.2.0/alr-1.2.0-x86_64.AppImage
+	chmod u+x $@
+
+BUILD_DIR := $(shell mktemp -d)
+$(ALS): $(ALR)
+	cd $(BUILD_DIR) && \
+	    alr get ada_language_server -b && \
+	    cp -v ada_language_server*/.obj/server/ada_language_server $@
+	chmod u+x $@
+
+alire-bin: $(ALR)
+
+ada_language_server-bin: $(ALS)
+
+.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin
