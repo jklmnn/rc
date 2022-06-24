@@ -89,7 +89,7 @@ $(ALR):
 	chmod u+x $@
 
 BUILD_DIR := $(shell mktemp -d)
-$(ALS): $(ALR)
+$(ALS): alire-update
 	cd $(BUILD_DIR) && \
 	    alr get ada_language_server -b && \
 	    cp -v ada_language_server*/.obj/server/ada_language_server $@
@@ -97,6 +97,9 @@ $(ALS): $(ALR)
 
 alire-bin: $(ALR)
 
+alire-update: alire-bin
+	alr index --update-all
+
 ada_language_server-bin: $(ALS)
 
-.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin
+.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin alire-update
