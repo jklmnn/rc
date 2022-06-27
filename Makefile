@@ -88,8 +88,15 @@ $(ALR):
 	    https://github.com/alire-project/alire/releases/download/v1.2.0/alr-1.2.0-x86_64.AppImage
 	chmod u+x $@
 
+$(HOME)/.config/alire-indexes/als/index/index.toml:
+	mkdir -p $(HOME)/.config/alire/indexes/als
+	git clone  https://github.com/reznikmm/als-alire-index.git $(HOME)/.config/alire-indexes/als
+
+$(HOME)/.config/alire/indexes/als/index.toml: $(HOME)/.config/alire-indexes/als/index/index.toml
+	alr index --add file://$(HOME)/.config/alire-indexes/als --name als
+
 BUILD_DIR := $(shell mktemp -d)
-$(ALS): alire-update
+$(ALS): $(HOME)/.config/alire-indexes/als/index/index.toml alire-update
 	cd $(BUILD_DIR) && \
 	    alr get ada_language_server -b && \
 	    cp -v ada_language_server*/.obj/server/ada_language_server $@
