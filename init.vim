@@ -7,7 +7,7 @@ call plug#begin(stdpath('data').'plugged')
 else
 call plug#begin('~/.vim/plugged')
 endif
-    Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+    Plug 'https://github.com/mg979/vim-visual-multi.git'
     Plug 'https://github.com/rhysd/committia.vim.git'
     Plug 'https://github.com/Raimondi/delimitMate.git'
     Plug 'https://github.com/tpope/vim-fugitive.git'
