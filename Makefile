@@ -109,4 +109,9 @@ alire-update: alire-bin
 
 ada_language_server-bin: $(ALS)
 
-.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin alire-update
+$(HOME)/.gdbinit: gdbinit
+	cp $< $@
+
+gdb: $(HOME)/.gdbinit
+
+.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin alire-update gdb
