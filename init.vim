@@ -16,12 +16,12 @@ endif
     Plug 'https://github.com/romainl/vim-cool.git'
     Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git'
     Plug 'ntpeters/vim-better-whitespace'
-    Plug 'https://github.com/ap/vim-buftabline.git'
     Plug 'junegunn/vim-easy-align'
     Plug 'https://github.com/AndrewRadev/linediff.vim.git'
     Plug 'https://github.com/thindil/a.vim.git'
     Plug 'rust-lang/rust.vim'
     Plug 'https://github.com/Yggdroot/indentLine.git'
+    Plug 'vim-airline/vim-airline'
     "Plug extend
 call plug#end()
 
@@ -51,6 +51,8 @@ set splitright
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set tabpagemax=100
 set hidden
+
+let g:airline#extensions#tabline#enabled = 1
 
 if !has('nvim')
 " mucomplete
