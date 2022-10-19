@@ -7,6 +7,7 @@ call plug#begin(stdpath('data').'plugged')
 else
 call plug#begin('~/.vim/plugged')
 endif
+    Plug 'https://github.com/tobi-wan-kenobi/zengarden.git'
     Plug 'https://github.com/mg979/vim-visual-multi.git'
     Plug 'https://github.com/rhysd/committia.vim.git'
     Plug 'https://github.com/Raimondi/delimitMate.git'
@@ -82,7 +83,6 @@ augroup END
 let g:airline#extensions#tabline#enabled = 1
 let g:black_linelength = 100
 
-
 if !has('nvim')
 " mucomplete
     set completeopt+=menuone
@@ -92,7 +92,7 @@ if !has('nvim')
     let g:mucomplete#completion_delay = 1
 endif
 
-colorscheme ron
+colorscheme zengarden
 
 map Y y$
 
