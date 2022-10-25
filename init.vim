@@ -93,6 +93,7 @@ if !has('nvim')
 endif
 
 colorscheme zengarden
+set background=dark
 
 map Y y$
 
