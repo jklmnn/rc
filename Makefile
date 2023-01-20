@@ -85,7 +85,7 @@ ALS := $(shell which ada_language_server || echo $(HOME)/.local/bin/ada_language
 
 $(ALR):
 	curl -fLo $@ --create-dirs \
-	    https://github.com/alire-project/alire/releases/download/v1.2.0/alr-1.2.0-x86_64.AppImage
+	    https://github.com/alire-project/alire/releases/download/v1.2.2/alr-1.2.2-x86_64.AppImage
 	chmod u+x $@
 
 $(HOME)/.config/alire-indexes/als/index/index.toml:
