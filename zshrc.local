@@ -39,8 +39,6 @@ export PATH="$PATH:$HOME/.local/bin"
 #rust
 export PATH="$PATH:$HOME/.cargo/bin"
 
-export PATH="$HOME/e3/bin:$PATH"
-
 #nix
 if [ -e /home/jk/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jk/.nix-profile/etc/profile.d/nix.sh; fi
 
