@@ -47,6 +47,7 @@ filetype plugin indent on
 syntax enable
 
 autocmd FileType ada setlocal expandtab shiftwidth=3 softtabstop=3 colorcolumn=120
+autocmd FileType python setlocal colorcolumn=100
 
 set path+=**
 set wildmenu
