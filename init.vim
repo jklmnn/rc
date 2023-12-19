@@ -7,37 +7,67 @@ call plug#begin(stdpath('data').'plugged')
 else
 call plug#begin('~/.vim/plugged')
 endif
+    " color theme
     Plug 'https://github.com/tobi-wan-kenobi/zengarden.git'
+    " multi cursor support
     Plug 'https://github.com/mg979/vim-visual-multi.git'
+    " git commit message editing
     Plug 'https://github.com/rhysd/committia.vim.git'
+    " automatic closing of quotes and parenthesis etc.
     Plug 'https://github.com/Raimondi/delimitMate.git'
+    " git commands
     Plug 'https://github.com/tpope/vim-fugitive.git'
+    " comment stuff out
     Plug 'https://github.com/tpope/vim-commentary.git'
+    " automatic end tags in html, xml, etc
     Plug 'https://github.com/vim-scripts/sgmlendtag.git'
+    " absolute and relative line numbers
     Plug 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
+    " disable search highlighting after search
     Plug 'https://github.com/romainl/vim-cool.git'
+    " yank and delete in a stack
     Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git'
+    " highlight trailing whitespace
     Plug 'ntpeters/vim-better-whitespace'
+    " operator alignment
     Plug 'junegunn/vim-easy-align'
+    " diff visual blocks
     Plug 'https://github.com/AndrewRadev/linediff.vim.git'
+    " switch between source and header files
     Plug 'https://github.com/thindil/a.vim.git'
+    " rust support
     Plug 'rust-lang/rust.vim'
+    " display vertical lines in indentations
     Plug 'https://github.com/Yggdroot/indentLine.git'
+    " tab and status bar
     Plug 'vim-airline/vim-airline'
+    " fuzzy search
     Plug 'junegunn/fzf'
+    " black formatting for python
     Plug 'psf/black'
     if has('nvim')
+        " gdb support
         Plug 'sakhnik/nvim-gdb'
-        Plug 'hrsh7th/cmp-buffer'        " nvim-cmp source for buffer words
-        Plug 'hrsh7th/cmp-cmdline'       " nvim-cmp source for vim's cmdline
-        Plug 'hrsh7th/cmp-nvim-lsp'      " nvim-cmp source for built-in LSP client
-        Plug 'hrsh7th/cmp-path'          " nvim-cmp source for filesystem paths
-        Plug 'hrsh7th/nvim-cmp'          " Auto completion
-        Plug 'mfussenegger/nvim-lint'    " Asynchronous linting
-        Plug 'neovim/nvim-lspconfig'     " Collection of configurations for built-in LSP client
-        Plug 'ray-x/lsp_signature.nvim'  " LSP signature hint as you type
+        " nvim-cmp source for buffer words
+        Plug 'hrsh7th/cmp-buffer'
+        " nvim-cmp source for vim's cmdline
+        Plug 'hrsh7th/cmp-cmdline'
+        " nvim-cmp source for built-in LSP client
+        Plug 'hrsh7th/cmp-nvim-lsp'
+        " nvim-cmp source for filesystem paths
+        Plug 'hrsh7th/cmp-path'
+        " auto completion
+        Plug 'hrsh7th/nvim-cmp'
+        " asynchronous linting
+        Plug 'mfussenegger/nvim-lint'
+        " collection of configurations for built-in LSP client
+        Plug 'neovim/nvim-lspconfig'
+        " LSP signature hint as you type
+        Plug 'ray-x/lsp_signature.nvim'
+        " quick jump to locations
         Plug 'phaazon/hop.nvim'
     else
+        " vim auto completion
         Plug 'https://github.com/lifepillar/vim-mucomplete.git'
     endif
     "Plug extend
@@ -241,7 +271,6 @@ if has('nvim')
     require('lspconfig')['als'].setup {
       capabilities = capabilities,
       on_attach = on_attach,
-
     }
     require('lspconfig')['pyright'].setup {
       capabilities = capabilities,
