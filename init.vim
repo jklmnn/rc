@@ -25,8 +25,6 @@ endif
     Plug 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
     " disable search highlighting after search
     Plug 'https://github.com/romainl/vim-cool.git'
-    " yank and delete in a stack
-    Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git'
     " highlight trailing whitespace
     Plug 'ntpeters/vim-better-whitespace'
     " operator alignment
@@ -66,9 +64,13 @@ endif
         Plug 'ray-x/lsp_signature.nvim'
         " quick jump to locations
         Plug 'phaazon/hop.nvim'
+        " yank buffer
+        Plug 'https://github.com/gbprod/yanky.nvim'
     else
         " vim auto completion
         Plug 'https://github.com/lifepillar/vim-mucomplete.git'
+        " yank and delete in a stack
+        Plug 'https://github.com/maxbrunsfeld/vim-yankstack.git'
     endif
     "Plug extend
 call plug#end()
@@ -339,7 +341,20 @@ if has('nvim')
         source = 'always',
       },
     })
+
+    -- Configure yanky
+    require("yanky").setup({})
+    vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+    vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+    vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+    vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+
+    -- Use the same keybindings as vim-yankstack
+    vim.keymap.set("n", "ð", "<Plug>(YankyPreviousEntry)")
+    vim.keymap.set("n", "Ð", "<Plug>(YankyNextEntry)")
+
 EOF
+
 endif
 
 au BufRead,BufNewFile *.anod             setfiletype python
