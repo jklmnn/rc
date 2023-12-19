@@ -100,6 +100,7 @@ set splitright
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set tabpagemax=100
 set hidden
+set mouse=
 
 augroup Binary
   au!
