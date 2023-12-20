@@ -66,6 +66,8 @@ endif
         Plug 'phaazon/hop.nvim'
         " yank buffer
         Plug 'https://github.com/gbprod/yanky.nvim'
+        " LSP project local settings
+        Plug 'https://github.com/tamago324/nlsp-settings.nvim.git'
     else
         " vim auto completion
         Plug 'https://github.com/lifepillar/vim-mucomplete.git'
@@ -268,6 +270,8 @@ if has('nvim')
 
     -- Set up lsp_signature
     require('lsp_signature').setup()
+
+    require('nlspsettings').setup({})
 
     -- Set up lspconfig
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
