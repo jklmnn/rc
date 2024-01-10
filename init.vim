@@ -298,6 +298,34 @@ if has('nvim')
       },
     }
 
+    --  Set up language server for RecordFlux
+
+    vim.filetype.add({
+      extension = {
+        rflx = 'recordflux',
+      }
+    })
+
+    local lspconfig = require 'lspconfig'
+    local configs = require 'lspconfig.configs'
+    local util = require 'lspconfig.util'
+
+    if not configs.rflx_ls then
+      configs.rflx_ls = {
+        default_config = {
+          name = 'RecordFlux LS',
+          cmd = { 'rflx', 'run_ls' },
+          filetypes = { 'recordflux' },
+          root_dir = util.root_pattern('*.rflx')
+        };
+      }
+    end
+
+    lspconfig.rflx_ls.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+
     require('hop').setup()
     local hop = require('hop')
     local directions = require('hop.hint').HintDirection
@@ -362,4 +390,3 @@ EOF
 endif
 
 au BufRead,BufNewFile *.anod             setfiletype python
-au BufRead,BufNewFile *.rflx             setfiletype ada
