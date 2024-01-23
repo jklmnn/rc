@@ -26,12 +26,12 @@ nvim: $(HOME)/.local/share/nvim/site/autoload/plug.vim neovim-bin
 	cp init.vim $(HOME)/.config/nvim/init.vim
 
 neovim: nvim
-	nvim +PlugUpdate +qall
+	nvim --headless +PlugUpdate +qall
 
 neovim-extended: neovim
 	sed -i "/\"Plug extend/r init.extend" $(HOME)/.config/nvim/init.vim
 	sed -i "s/\"Plug extend//g" $(HOME)/.config/nvim/init.vim
-	nvim +PlugUpdate +UpdateRemotePlugins +qall
+	nvim --headless +PlugUpdate +UpdateRemotePlugins +qall
 
 $(HOME)/%/plug.vim:
 	curl -fLo $@ --create-dirs \
