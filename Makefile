@@ -46,20 +46,23 @@ $(HOME)/.zshrc:
 $(HOME)/.zsh:
 	mkdir -p $@
 
-$(HOME)/.zsh/zsh-autosuggestions: $(HOME)/.zsh
+$(HOME)/.zsh/zsh-autosuggestions/README.md: $(HOME)/.zsh
+	rm -rf ~/.zsh/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
-$(HOME)/.zsh/zsh-syntax-highlighting: $(HOME)/.zsh
+$(HOME)/.zsh/zsh-syntax-highlighting/README.md: $(HOME)/.zsh
+	rm -rf ~/.zsh/zsh-syntax-highlighting
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 
-$(HOME)/.zsh/zlong_alert: $(HOME)/.zsh
+$(HOME)/.zsh/zlong_alert/README.md: $(HOME)/.zsh
+	rm -rf ~/.zsh/zlong_alert
 	git clone https://github.com/kevinywlui/zlong_alert.zsh ~/.zsh/zlong_alert
 
-zsh-autosuggestions: $(HOME)/.zsh/zsh-autosuggestions
+zsh-autosuggestions: $(HOME)/.zsh/zsh-autosuggestions/README.md
 
-zsh-syntax-highlighting: $(HOME)/.zsh/zsh-syntax-highlighting
+zsh-syntax-highlighting: $(HOME)/.zsh/zsh-syntax-highlighting/README.md
 
-zlong_alert: $(HOME)/.zsh/zlong_alert
+zlong_alert: $(HOME)/.zsh/zlong_alert/README.md
 
 zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local
 
