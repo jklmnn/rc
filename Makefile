@@ -1,17 +1,6 @@
 
 all: neovim zsh tmux modules
 
-vimrc: $(HOME)/.vim/autoload/plug.vim
-	cp init.vim $(HOME)/.vimrc
-
-vim: vimrc
-	vim +PlugUpdate +qall
-
-vim-extended: vim
-	sed -i "/\"Plug extend/r init.extend" $(HOME)/.vimrc
-	sed -i "s/\"Plug extend//g" $(HOME)/.vimrc
-	vim +PlugUpdate +UpdateRemotePlugins +qall
-
 NVIM := $(shell which nvim || echo $(HOME)/.local/bin/nvim)
 
 $(NVIM):
@@ -21,17 +10,18 @@ $(NVIM):
 
 neovim-bin: $(NVIM)
 
-nvim: $(HOME)/.local/share/nvim/site/autoload/plug.vim neovim-bin
+$(HOME)/.local/share/nvim/site/pack/paqs/start:
+	mkdir -p $@
+
+$(HOME)/.local/share/nvim/site/pack/paqs/start/paq-nvim/README.md:
+	git clone --depth=1 https://github.com/savq/paq-nvim.git $(HOME)/.local/share/nvim/site/pack/paqs/start/paq-nvim
+
+nvim: $(HOME)/.local/share/nvim/site/pack/paqs/start/paq-nvim/README.md neovim-bin
 	mkdir -p $(HOME)/.config/nvim
-	cp init.vim $(HOME)/.config/nvim/init.vim
+	cp init.lua $(HOME)/.config/nvim/init.lua
 
 neovim: nvim
-	nvim --headless +PlugUpdate +qall
-
-neovim-extended: neovim
-	sed -i "/\"Plug extend/r init.extend" $(HOME)/.config/nvim/init.vim
-	sed -i "s/\"Plug extend//g" $(HOME)/.config/nvim/init.vim
-	nvim --headless +PlugUpdate +UpdateRemotePlugins +qall
+	nvim --headless +PaqSync +qall
 
 $(HOME)/%/plug.vim:
 	curl -fLo $@ --create-dirs \
@@ -117,4 +107,4 @@ $(HOME)/.gdbinit: gdbinit
 
 gdb: $(HOME)/.gdbinit
 
-.PHONY: all vim vim-extended neovim neovim-extended zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin alire-update gdb
+.PHONY: all neovim zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin alire-update gdb
