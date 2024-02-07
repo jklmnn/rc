@@ -21,7 +21,7 @@ nvim: $(HOME)/.local/share/nvim/site/pack/paqs/start/paq-nvim/README.md neovim-b
 	cp init.lua $(HOME)/.config/nvim/init.lua
 
 neovim: nvim
-	nvim --headless +PaqSync +qall
+	nvim --headless --cmd "let g:install_mode=1" +PaqSync +qall
 
 $(HOME)/%/plug.vim:
 	curl -fLo $@ --create-dirs \

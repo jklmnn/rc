@@ -92,6 +92,10 @@ require 'paq' {
     'tamago324/nlsp-settings.nvim',
 }
 
+if (vim.g.install_mode == 1) then
+    return
+end
+
 --  augroup Binary
 --    au!
 --    au BufReadPre  *.raw let &bin=1
