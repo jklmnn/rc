@@ -1,9 +1,6 @@
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax enable')
 
---  autocmd FileType ada setlocal expandtab shiftwidth=3 softtabstop=3 colorcolumn=120
---  autocmd FileType python setlocal colorcolumn=100
-
 vim.opt.path:append('**')
 vim.opt.wildmenu = true
 vim.opt.wildmode = 'longest:full'
@@ -96,16 +93,20 @@ if (vim.g.install_mode == 1) then
     return
 end
 
---  augroup Binary
---    au!
---    au BufReadPre  *.raw let &bin=1
---    au BufReadPost *.raw if &bin | %!xxd
---    au BufReadPost *.raw set ft=xxd | endif
---    au BufWritePre *.raw if &bin | %!xxd -r
---    au BufWritePre *.raw endif
---    au BufWritePost *.raw if &bin | %!xxd
---    au BufWritePost *.raw set nomod | endif
---  augroup END
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'ada',
+    command = 'setlocal expandtab shiftwidth=3 softtabstop=3 colorcolumn=80'
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'python',
+    command = 'setlocal colorcolumn=100'
+})
+
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+    pattern = '*.anod',
+    command = 'setfiletype python'
+})
 
 vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g['black_linelength'] = 100
@@ -356,5 +357,3 @@ vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
 -- Use the same keybindings as vim-yankstack
 vim.keymap.set("n", "ð", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "Ð", "<Plug>(YankyNextEntry)")
-
---  au BufRead,BufNewFile *.anod             setfiletype python
