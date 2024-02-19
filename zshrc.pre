@@ -1,0 +1,6 @@
+#autocomplete
+if [ -e ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]
+then
+    source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
+

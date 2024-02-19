@@ -30,6 +30,9 @@ $(HOME)/%/plug.vim:
 $(HOME)/.zshrc.local: zshrc.local
 	cp zshrc.local $(HOME)/.zshrc.local
 
+$(HOME)/.zshrc.pre: zshrc.pre
+	cp zshrc.pre $(HOME)/.zshrc.pre
+
 $(HOME)/.zshrc:
 	wget -O $(HOME)/.zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
 
@@ -48,15 +51,21 @@ $(HOME)/.zsh/zlong_alert/README.md: $(HOME)/.zsh
 	rm -rf ~/.zsh/zlong_alert
 	git clone https://github.com/kevinywlui/zlong_alert.zsh ~/.zsh/zlong_alert
 
+$(HOME)/.zsh/zsh-autocomplete/README.md: $(HOME)/.zsh
+	rm -rf ~/.zsh/zsh-autocomplete
+	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.zsh/zsh-autocomplete
+
 zsh-autosuggestions: $(HOME)/.zsh/zsh-autosuggestions/README.md
 
 zsh-syntax-highlighting: $(HOME)/.zsh/zsh-syntax-highlighting/README.md
 
 zlong_alert: $(HOME)/.zsh/zlong_alert/README.md
 
+zsh-autocomplete: $(HOME)/.zsh/zsh-autocomplete/README.md $(HOME)/.zshrc.pre
+
 zsh: $(HOME)/.zshrc $(HOME)/.zshrc.local
 
-zsh-all: zsh zsh-autosuggestions zsh-syntax-highlighting zlong_alert
+zsh-all: zsh zsh-autosuggestions zsh-syntax-highlighting zlong_alert zsh-autocomplete
 
 $(HOME)/.tmux.conf: tmux.conf
 	cp tmux.conf $(HOME)/.tmux.conf
