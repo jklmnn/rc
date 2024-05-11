@@ -149,7 +149,6 @@ cmp.setup({
   mapping = {
       ["<Tab>"] = cmp.mapping(function(fallback)
          if cmp.visible() then
-           cmp.complete()
            cmp.select_next_item()
          elseif has_words_before() then
            cmp.complete()
