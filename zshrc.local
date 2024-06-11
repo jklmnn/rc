@@ -41,6 +41,9 @@ export PATH="$PATH:$HOME/.cargo/bin"
 #nix
 if [ -e /home/jk/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jk/.nix-profile/etc/profile.d/nix.sh; fi
 
+#go
+export PATH="$PATH:$HOME/.go/bin"
+
 #disable core dumps
 ulimit -c 0
 
