@@ -61,18 +61,23 @@ export GOPATH=~/.go
 
 # ssh-agent
 
+FIXED_SSH_AUTH_SOCK="$HOME/.ssh/ssh-agent.sock"
 if [ -z $SSH_AGENT -a -z $SSH_AUTH_SOCK ]
 then
-    eval $(ssh-agent)
-    ssh-add
+    export SSH_AUTH_SOCK=$FIXED_SSH_AUTH_SOCK
+    ssh-add -l 2>/dev/null >/dev/null
+    if [ $? -ge 2 ]
+    then
+        ssh-agent -a $SSH_AUTH_SOCK >/dev/null
+        ssh-add
+    fi
 fi
 
-TMUX_SSH_AUTH_SOCK="/tmp/ssh-agent-$USER-tmux"
-if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $TMUX_SSH_AUTH_SOCK ]
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $FIXED_SSH_AUTH_SOCK ]
 then
-    rm -f $TMUX_SSH_AUTH_SOCK
-    ln -sf $SSH_AUTH_SOCK $TMUX_SSH_AUTH_SOCK
-    export SSH_AUTH_SOCK=$TMUX_SSH_AUTH_SOCK
+    rm -f $FIXED_SSH_AUTH_SOCK
+    ln -sf $SSH_AUTH_SOCK $FIXED_SSH_AUTH_SOCK
+    export SSH_AUTH_SOCK=$FIXED_SSH_AUTH_SOCK
 fi
 
 # https://gist.github.com/florianschmidt1994/64d6f5b58a84c77802cce5e415d7e3dc
