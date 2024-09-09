@@ -13,7 +13,6 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.backspace = 'indent,eol,start'
-vim.opt.pastetoggle = '<F11>'
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
@@ -23,12 +22,14 @@ vim.opt.listchars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
 vim.opt.tabpagemax = 100
 vim.opt.hidden = true
 vim.opt.mouse = ''
+vim.opt.termguicolors = true
+vim.opt.showtabline = 2
 
 require 'paq' {
     -- paq plugin manager
     'savq/paq-nvim',
     -- color theme
-    'tobi-wan-kenobi/zengarden',
+    'gruvbox-community/gruvbox',
     -- multi cursor support
     'mg979/vim-visual-multi',
     -- git commit message editing
@@ -58,7 +59,9 @@ require 'paq' {
     -- display vertical lines in indentations
     'Yggdroot/indentLine',
     -- tab and status bar
-    'vim-airline/vim-airline',
+    'nvim-tree/nvim-web-devicons',
+    'nvim-lualine/lualine.nvim',
+    'akinsho/bufferline.nvim',
     -- fuzzy search
     'junegunn/fzf',
     -- black formatting for python
@@ -87,6 +90,8 @@ require 'paq' {
     'gbprod/yanky.nvim',
     -- LSP project local settings
     'tamago324/nlsp-settings.nvim',
+    -- ALS LSP config
+    'TamaMcGlinn/nvim-lspconfig-ada',
 }
 
 if (vim.g.install_mode == 1) then
@@ -108,11 +113,10 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
     command = 'setfiletype python'
 })
 
-vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g['black_linelength'] = 100
 
-vim.cmd('colorscheme zengarden')
 vim.opt.background = 'dark'
+vim.cmd('colorscheme gruvbox')
 
 --  map Y y$
 --
@@ -132,6 +136,9 @@ end
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+
+require('lualine').setup()
+require("bufferline").setup{}
 
 -- Set up nvim-cmp
 local cmp = require'cmp'
@@ -255,10 +262,6 @@ require('nlspsettings').setup({})
 
 -- Set up lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['als'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
   on_attach = on_attach,
