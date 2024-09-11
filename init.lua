@@ -81,17 +81,17 @@ require 'paq' {
     -- asynchronous linting
     'mfussenegger/nvim-lint',
     -- collection of configurations for built-in LSP client
-    'neovim/nvim-lspconfig',
+    --'neovim/nvim-lspconfig',
+    'TamaMcGlinn/nvim-lspconfig',
     -- LSP signature hint as you type
     'ray-x/lsp_signature.nvim',
     -- quick jump to locations
     'ggandor/leap.nvim',
     -- yank buffer
     'gbprod/yanky.nvim',
-    -- LSP project local settings
-    'tamago324/nlsp-settings.nvim',
     -- ALS LSP config
     'TamaMcGlinn/nvim-lspconfig-ada',
+    'TamaMcGlinn/nvim-lsp-gpr-selector',
 }
 
 if (vim.g.install_mode == 1) then
@@ -258,10 +258,13 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
 -- Set up lsp_signature
 require('lsp_signature').setup()
 
-require('nlspsettings').setup({})
-
 -- Set up lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig').als.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  on_init = require("gpr_selector").als_on_init,
+}
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
   on_attach = on_attach,
