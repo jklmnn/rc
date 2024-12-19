@@ -81,8 +81,8 @@ require 'paq' {
     -- asynchronous linting
     'mfussenegger/nvim-lint',
     -- collection of configurations for built-in LSP client
-    --'neovim/nvim-lspconfig',
-    'TamaMcGlinn/nvim-lspconfig',
+    'neovim/nvim-lspconfig',
+    'folke/neoconf.nvim',
     -- LSP signature hint as you type
     'ray-x/lsp_signature.nvim',
     -- quick jump to locations
@@ -257,6 +257,8 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
 
 -- Set up lsp_signature
 require('lsp_signature').setup()
+
+require('neoconf').setup()
 
 -- Set up lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
