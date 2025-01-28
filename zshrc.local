@@ -128,4 +128,13 @@ then
     export MODULEPATH="$HOME/.modules:$MODULEPATH"
 fi
 
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_reduce_blanks
+setopt hist_verify
+
 zstyle ':prompt:grml:left:setup' items time rc change-root user at host path virtual-env vcs percent
