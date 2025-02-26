@@ -92,6 +92,9 @@ require 'paq' {
     -- ALS LSP config
     'TamaMcGlinn/nvim-lspconfig-ada',
     'TamaMcGlinn/nvim-lsp-gpr-selector',
+    -- Copilot
+    'zbirenbaum/copilot.lua',
+    'zbirenbaum/copilot-cmp',
 }
 
 if (vim.g.install_mode == 1) then
@@ -177,6 +180,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
+    { name = 'copilot' },
   }, {
     { name = 'buffer' },
   })
@@ -365,3 +369,12 @@ vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
 -- Use the same keybindings as vim-yankstack
 vim.keymap.set("n", "ð", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "Ð", "<Plug>(YankyNextEntry)")
+
+-- Copilot
+vim.api.nvim_create_user_command('CopilotInit', function()
+    require("copilot_cmp").setup()
+    require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+    })
+end, {});
