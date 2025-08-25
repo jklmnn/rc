@@ -121,11 +121,11 @@ grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
 if [ -e /etc/profile.d/lmod.sh ]
 then
     source /etc/profile.d/lmod.sh
-    export MODULEPATH="$HOME/.modules:$MODULEPATH"
-elif [ -e /etc/profile.d/module.sh ]
+    export MODULEPATH="$HOME/.config/lmod/modulefiles:$MODULEPATH"
+elif [ -e /etc/profile.d/modules.sh ]
 then
-    source /etc/profile.d/module.sh
-    export MODULEPATH="$HOME/.modules:$MODULEPATH"
+    source /etc/profile.d/modules.sh
+    export MODULEPATH="$HOME/.config/lmod/modulefiles:$MODULEPATH"
 fi
 
 HISTSIZE=1000000
