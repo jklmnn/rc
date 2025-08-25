@@ -1,5 +1,5 @@
 
-all: neovim zsh tmux modules
+all: neovim zsh tmux
 
 NVIM := $(shell which nvim || echo $(HOME)/.local/bin/nvim)
 
@@ -69,9 +69,6 @@ tmux: $(HOME)/.tmux.conf $(HOME)/.tmuxconkyrc
 nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 	curl https://nixos.org/nix/install | sh
 
-modules:
-	rsync -rupE modules/* $(HOME)/.modules
-
 ALR := $(or $(shell which alr),$(HOME)/.local/bin/alr)
 
 ALS := $(shell which ada_language_server || echo $(HOME)/.local/bin/ada_language_server)
@@ -107,4 +104,4 @@ $(HOME)/.gdbinit: gdbinit
 
 gdb: $(HOME)/.gdbinit
 
-.PHONY: all neovim zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix modules alire-bin ada_language_server-bin alire-update gdb
+.PHONY: all neovim zsh zsh-all zsh-autosuggestions zsh-syntax-highlighting zlong_alert tmux nix alire-bin ada_language_server-bin alire-update gdb
