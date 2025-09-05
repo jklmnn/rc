@@ -64,7 +64,11 @@ $(HOME)/.tmux.conf: tmux.conf
 $(HOME)/.tmuxconkyrc: tmuxconkyrc
 	cp tmuxconkyrc $(HOME)/.tmuxconkyrc
 
-tmux: $(HOME)/.tmux.conf $(HOME)/.tmuxconkyrc
+$(HOME)/.tmux/plugins/tpm/tpm:
+	mkdir -p $(HOME)/.tmux/plugins
+	git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
+
+tmux: $(HOME)/.tmux.conf $(HOME)/.tmuxconkyrc $(HOME)/.tmux/plugins/tpm/tpm
 
 nix: $(HOME)/.nix-profile/etc/profile.d/nix.sh
 	curl https://nixos.org/nix/install | sh
