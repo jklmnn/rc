@@ -1,12 +1,26 @@
 
 all: neovim zsh tmux
 
-NVIM := $(shell which nvim || echo $(HOME)/.local/bin/nvim)
+NVIM := $(HOME)/.local/bin/nvim
 
 $(NVIM):
-	curl -fLo $@ --create-dirs \
-		https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	chmod u+x $@
+	mkdir -p $(HOME)/.local/bin
+	if grep -qE '^(systemd|init)\b' /proc/1/sched 2>/dev/null; then \
+		curl -fLo $@ \
+			https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage && \
+		chmod u+x $@; \
+	else \
+		curl -fLo /tmp/nvim.appimage \
+			https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage && \
+		chmod u+x /tmp/nvim.appimage && \
+		cd /tmp && /tmp/nvim.appimage --appimage-extract && \
+		cp /tmp/squashfs-root/usr/bin/nvim $@ && \
+		mkdir -p $(HOME)/.local/share/nvim && \
+		cp -r /tmp/squashfs-root/usr/share/nvim/runtime $(HOME)/.local/share/nvim/ && \
+		mkdir -p $(HOME)/.local/lib && \
+		cp -r /tmp/squashfs-root/usr/lib/nvim $(HOME)/.local/lib/ && \
+		rm -rf /tmp/squashfs-root /tmp/nvim.appimage; \
+	fi
 
 neovim-bin: $(NVIM)
 
