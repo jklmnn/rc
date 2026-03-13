@@ -86,7 +86,7 @@ require 'paq' {
     -- LSP signature hint as you type
     'ray-x/lsp_signature.nvim',
     -- quick jump to locations
-    'ggandor/leap.nvim',
+    'https://codeberg.org/andyg/leap.nvim',
     -- yank buffer
     'gbprod/yanky.nvim',
     -- ALS LSP config
@@ -267,12 +267,12 @@ require('neoconf').setup()
 
 -- Set up lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig').als.setup {
+vim.lsp.config('als', {
   capabilities = capabilities,
   on_attach = on_attach,
   on_init = require("gpr_selector").als_on_init,
-}
-require('lspconfig')['pyright'].setup {
+})
+vim.lsp.config('pyright', {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -282,14 +282,14 @@ require('lspconfig')['pyright'].setup {
       }
     }
   }
-}
-require('lspconfig')['rust_analyzer'].setup{
+})
+vim.lsp.config('rust_analyzer', {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     ["rust-analyzer"] = {}
   },
-}
+})
 
 --  Set up language server for RecordFlux
 
@@ -298,28 +298,6 @@ vim.filetype.add({
     rflx = 'recordflux',
   }
 })
-
-local lspconfig = require 'lspconfig'
-local configs = require 'lspconfig.configs'
-local util = require 'lspconfig.util'
-
-if not configs.rflx_ls then
-  configs.rflx_ls = {
-    default_config = {
-      name = 'RecordFlux LS',
-      cmd = { 'rflx', 'run_ls' },
-      filetypes = { 'recordflux' },
-      root_dir = util.root_pattern('*.rflx')
-    };
-  }
-end
-
-lspconfig.rflx_ls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-require('leap').create_default_mappings()
 
 -- Filter out specific diagnostic messages
 -- https://github.com/neovim/nvim-lspconfig/issues/726
