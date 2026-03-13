@@ -348,6 +348,10 @@ vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
 vim.keymap.set("n", "ð", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "Ð", "<Plug>(YankyNextEntry)")
 
+--  leap
+vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
+
 -- Copilot
 vim.api.nvim_create_user_command('CopilotInit', function()
     require("copilot_cmp").setup()
