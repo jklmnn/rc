@@ -88,8 +88,7 @@ vim.pack.add({
     -- yank buffer
     'https://github.com/gbprod/yanky.nvim',
     -- ALS LSP config
-    'https://github.com/TamaMcGlinn/nvim-lspconfig-ada',
-    'https://github.com/TamaMcGlinn/nvim-lsp-gpr-selector',
+    'https://github.com/jklmnn/nvim-lsp-gpr-selector',
     -- Copilot
     'https://github.com/zbirenbaum/copilot.lua',
     'https://github.com/zbirenbaum/copilot-cmp',
@@ -213,6 +212,11 @@ cmp.setup.cmdline(':', {
   })
 })
 
+vim.diagnostic.enable = true
+vim.diagnostic.config({
+  virtual_lines = true,
+})
+
 -- Mappings
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -267,9 +271,10 @@ require('neoconf').setup()
 
 -- Set up lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-vim.lsp.config('als', {
+vim.lsp.config('ada_ls', {
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {},
   on_init = require("gpr_selector").als_on_init,
 })
 vim.lsp.config('pyright', {
@@ -291,13 +296,9 @@ vim.lsp.config('rust_analyzer', {
   },
 })
 
---  Set up language server for RecordFlux
-
-vim.filetype.add({
-  extension = {
-    rflx = 'recordflux',
-  }
-})
+vim.lsp.enable('ada_ls')
+vim.lsp.enable('pyright')
+vim.lsp.enable('rust_analyzer')
 
 -- Filter out specific diagnostic messages
 -- https://github.com/neovim/nvim-lspconfig/issues/726
@@ -323,11 +324,12 @@ function filter_diagnostics(diagnostic)
 end
 
 function custom_on_publish_diagnostics(a, params, client_id, c, config)
-  filter(params.diagnostics, filter_diagnostics)
-  vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(custom_on_publish_diagnostics, {})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+  filter(result.diagnostics, filter_diagnostics)
+  vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+end
 
 -- Configure diagnostics
 vim.diagnostic.config({
