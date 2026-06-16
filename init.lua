@@ -25,79 +25,77 @@ vim.opt.mouse = ''
 vim.opt.termguicolors = true
 vim.opt.showtabline = 2
 
-require 'paq' {
-    -- paq plugin manager
-    'savq/paq-nvim',
+vim.pack.add({
     -- color theme
-    'gruvbox-community/gruvbox',
+    'https://github.com/gruvbox-community/gruvbox',
     -- multi cursor support
-    'mg979/vim-visual-multi',
+    'https://github.com/mg979/vim-visual-multi',
     -- git commit message editing
-    'rhysd/committia.vim',
+    'https://github.com/rhysd/committia.vim',
     -- automatic closing of quotes and parenthesis etc.
-    'Raimondi/delimitMate',
+    'https://github.com/Raimondi/delimitMate',
     -- git commands
-    'tpope/vim-fugitive',
+    'https://github.com/tpope/vim-fugitive',
     -- comment stuff out
-    'tpope/vim-commentary',
+    'https://github.com/tpope/vim-commentary',
     -- automatic end tags in html, xml, etc
-    'vim-scripts/sgmlendtag',
+    'https://github.com/vim-scripts/sgmlendtag',
     -- absolute and relative line numbers
-    'jeffkreeftmeijer/vim-numbertoggle',
+    'https://github.com/jeffkreeftmeijer/vim-numbertoggle',
     -- disable search highlighting after search
-    'romainl/vim-cool',
+    'https://github.com/romainl/vim-cool',
     -- highlight trailing whitespace
-    'ntpeters/vim-better-whitespace',
+    'https://github.com/ntpeters/vim-better-whitespace',
     -- operator alignment
-    'junegunn/vim-easy-align',
+    'https://github.com/junegunn/vim-easy-align',
     -- diff visual blocks
-    'AndrewRadev/linediff.vim',
+    'https://github.com/AndrewRadev/linediff.vim',
     -- switch between source and header files
-    'thindil/a.vim',
+    'https://github.com/thindil/a.vim',
     -- rust support
-    'rust-lang/rust.vim',
+    'https://github.com/rust-lang/rust.vim',
     -- display vertical lines in indentations
-    'Yggdroot/indentLine',
+    'https://github.com/Yggdroot/indentLine',
     -- tab and status bar
-    'nvim-tree/nvim-web-devicons',
-    'nvim-lualine/lualine.nvim',
-    'akinsho/bufferline.nvim',
+    'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/nvim-lualine/lualine.nvim',
+    'https://github.com/akinsho/bufferline.nvim',
     -- fuzzy search
-    'junegunn/fzf',
+    'https://github.com/junegunn/fzf',
     -- black formatting for python
-    'psf/black',
+    'https://github.com/psf/black',
     -- gdb support
-    'sakhnik/nvim-gdb',
+    'https://github.com/sakhnik/nvim-gdb',
     -- nvim-cmp source for buffer words
-    'hrsh7th/cmp-buffer',
+    'https://github.com/hrsh7th/cmp-buffer',
     -- nvim-cmp source for vim's cmdline
-    'hrsh7th/cmp-cmdline',
+    'https://github.com/hrsh7th/cmp-cmdline',
     -- nvim-cmp source for built-in LSP client
-    'hrsh7th/cmp-nvim-lsp',
+    'https://github.com/hrsh7th/cmp-nvim-lsp',
     -- nvim-cmp source for filesystem paths
-    'hrsh7th/cmp-path',
+    'https://github.com/hrsh7th/cmp-path',
     -- auto completion
-    'hrsh7th/nvim-cmp',
+    'https://github.com/hrsh7th/nvim-cmp',
     -- asynchronous linting
-    'mfussenegger/nvim-lint',
+    'https://github.com/mfussenegger/nvim-lint',
     -- collection of configurations for built-in LSP client
-    'neovim/nvim-lspconfig',
-    'folke/neoconf.nvim',
+    'https://github.com/neovim/nvim-lspconfig',
+    'https://github.com/folke/neoconf.nvim',
     -- LSP signature hint as you type
-    'ray-x/lsp_signature.nvim',
+    'https://github.com/ray-x/lsp_signature.nvim',
     -- quick jump to locations
     'https://codeberg.org/andyg/leap.nvim',
     -- yank buffer
-    'gbprod/yanky.nvim',
+    'https://github.com/gbprod/yanky.nvim',
     -- ALS LSP config
-    'TamaMcGlinn/nvim-lspconfig-ada',
-    'TamaMcGlinn/nvim-lsp-gpr-selector',
+    'https://github.com/TamaMcGlinn/nvim-lspconfig-ada',
+    'https://github.com/TamaMcGlinn/nvim-lsp-gpr-selector',
     -- Copilot
-    'zbirenbaum/copilot.lua',
-    'zbirenbaum/copilot-cmp',
+    'https://github.com/zbirenbaum/copilot.lua',
+    'https://github.com/zbirenbaum/copilot-cmp',
     -- Claude
-    'coder/claudecode.nvim',
-}
+    'https://github.com/coder/claudecode.nvim',
+})
 
 if (vim.g.install_mode == 1) then
     return
