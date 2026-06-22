@@ -87,8 +87,6 @@ vim.pack.add({
     'https://codeberg.org/andyg/leap.nvim',
     -- yank buffer
     'https://github.com/gbprod/yanky.nvim',
-    -- ALS LSP config
-    'https://github.com/jklmnn/nvim-lsp-gpr-selector',
     -- Copilot
     'https://github.com/zbirenbaum/copilot.lua',
     'https://github.com/zbirenbaum/copilot-cmp',
@@ -271,12 +269,6 @@ require('neoconf').setup()
 
 -- Set up lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-vim.lsp.config('ada_ls', {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {},
-  on_init = require("gpr_selector").als_on_init,
-})
 vim.lsp.config('pyright', {
   capabilities = capabilities,
   on_attach = on_attach,
