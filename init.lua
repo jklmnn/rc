@@ -269,6 +269,12 @@ require('neoconf').setup()
 
 -- Set up lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config('ada_ls', {
+    root_dir = function(bufnr, on_dir)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        on_dir(require('lspconfig').util.root_pattern('alire.toml', '*.gpr', '*.adc', 'Makefile', '.git')(fname))
+    end,
+})
 vim.lsp.config('pyright', {
   capabilities = capabilities,
   on_attach = on_attach,
