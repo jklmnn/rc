@@ -87,11 +87,8 @@ vim.pack.add({
     'https://codeberg.org/andyg/leap.nvim',
     -- yank buffer
     'https://github.com/gbprod/yanky.nvim',
-    -- Copilot
-    'https://github.com/zbirenbaum/copilot.lua',
-    'https://github.com/zbirenbaum/copilot-cmp',
-    -- Claude
-    'https://github.com/coder/claudecode.nvim',
+    -- sidekick
+    'https://github.com/folke/sidekick.nvim',
 })
 
 if (vim.g.install_mode == 1) then
@@ -354,38 +351,4 @@ vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
--- Copilot
-vim.api.nvim_create_user_command('CopilotInit', function()
-    require("copilot_cmp").setup()
-    require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-    })
-end, {});
-
--- Claude
-require('claudecode').setup(
-    {
-      "coder/claudecode.nvim",
-      config = true,
-      keys = {
-        { "<leader>a", nil, desc = "AI/Claude Code" },
-        { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-        { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-        { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-        { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-        { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-        { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-        { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-        {
-          "<leader>as",
-          "<cmd>ClaudeCodeTreeAdd<cr>",
-          desc = "Add file",
-          ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
-        },
-        -- Diff management
-        { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-        { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-      },
-    }
-)
+require("sidekick").setup({})
